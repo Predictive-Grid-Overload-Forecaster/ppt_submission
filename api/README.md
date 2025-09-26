@@ -9,8 +9,6 @@ This project fetches holidays, weather, and carbon intensity data for Delhi usin
 **Endpoint:**
 https://calendarific.com/api/v2/holidays?&api_key=YOUR_API_KEY&country=IN&location=Delhi&year=2025
 
-p
-
 **Data You Get:**
 - 🗓️ Public, bank, and regional holidays
 - 🛑 Observances like weekends and special days
