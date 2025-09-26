@@ -1,34 +1,46 @@
 # 🚀 Delhi Data APIs: Quick Usage Guide
 
-Easily fetch **holidays**, **weather**, and **carbon intensity** for Delhi using these APIs. Each section includes a sample Python `requests` snippet.
+Easily fetch **holidays**, **weather**, and **carbon intensity** for Delhi using these FastAPI endpoints. Each section includes a sample request and response.
 
 ---
 
-## 1️⃣ Calendarific API – Holidays & Observances
+## 1️⃣ `/holidays` – Delhi Holidays & Observances
 
 **Endpoint:**  
-`https://calendarific.com/api/v2/holidays?api_key=YOUR_API_KEY&country=IN&location=Delhi&year=2025`
+`GET /holidays?year=2025`
 
 **Returns:**  
 - 🗓️ Public, bank, and regional holidays  
 - 🛑 Observances (weekends, festivals, special days)
 
-**Sample Fetch (Python):**
+**Sample Request (Python):**
 ```python
 import requests
 
-calendarific_key = "YOUR_API_KEY"
-url = f"https://calendarific.com/api/v2/holidays?api_key={calendarific_key}&country=IN&location=Delhi&year=2025"
+url = "http://localhost:8000/holidays?year=2025"
 response = requests.get(url)
 print(response.json())
 ```
 
+**Sample Response:**
+```json
+{
+  "year": 2025,
+  "location": "Delhi",
+  "holidays": [
+    {"date": "2025-01-26", "name": "Republic Day", "type": "public"},
+    {"date": "2025-08-15", "name": "Independence Day", "type": "public"},
+    // ...more holidays...
+  ]
+}
+```
+
 ---
 
-## 2️⃣ WeatherAPI – Delhi Weather
+## 2️⃣ `/weather` – Delhi Weather
 
 **Endpoint:**  
-`https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=Delhi`
+`GET /weather`
 
 **Returns:**  
 - 🌡️ Temperature (°C/°F)  
@@ -37,55 +49,74 @@ print(response.json())
 - 🌧️ Precipitation  
 - 🌅 Sunrise & sunset times
 
-**Sample Fetch (Python):**
+**Sample Request (Python):**
 ```python
 import requests
 
-weather_key = "YOUR_API_KEY"
-url = f"https://api.weatherapi.com/v1/current.json?key={weather_key}&q=Delhi"
+url = "http://localhost:8000/weather"
 response = requests.get(url)
 print(response.json())
 ```
 
+**Sample Response:**
+```json
+{
+  "location": "Delhi",
+  "temperature_c": 32.5,
+  "wind_kph": 12.3,
+  "wind_dir": "NW",
+  "cloud": 40,
+  "precip_mm": 0.0,
+  "sunrise": "06:10",
+  "sunset": "18:45"
+}
+```
+
 ---
 
-## 3️⃣ Electricity Maps – Carbon Intensity
+## 3️⃣ `/carbon-intensity` – Carbon Intensity
 
 **Endpoint:**  
-`https://api.electricitymaps.com/v3/carbon-intensity/past?datetime=YYYY-MM-DD+HH%3AMM`
+`GET /carbon-intensity?datetime=2025-09-25T17:06`
 
 **Returns:**  
 - ⚡ Carbon intensity (gCO₂/kWh)  
 - 🔄 Historical, real-time, and forecast data
 
-**Sample Fetch (Python):**
+**Sample Request (Python):**
 ```python
 import requests
 
-electricity_maps_key = "YOUR_API_KEY"
-headers = {"auth-token": electricity_maps_key}
-url = "https://api.electricitymaps.com/v3/carbon-intensity/past?datetime=2025-09-25+17%3A06"
-response = requests.get(url, headers=headers)
+url = "http://localhost:8000/carbon-intensity?datetime=2025-09-25T17:06"
+response = requests.get(url)
 print(response.json())
+```
+
+**Sample Response:**
+```json
+{
+  "datetime": "2025-09-25T17:06",
+  "location": "Delhi",
+  "carbon_intensity_gco2_per_kwh": 620
+}
 ```
 
 ---
 
 ## 📝 Notes
 
-- Replace `"YOUR_API_KEY"` with your actual API keys.
 - All endpoints are for **Delhi, India** and **year 2025** (where applicable).
-- For more details, see each API’s official documentation.
+- For more details, see the FastAPI docs or `/docs` endpoint.
 
 ---
 
 ## 📦 Quick Reference
 
-| API                | Data Type         | Auth Required | Docs Link                                      |
-|--------------------|------------------|--------------|------------------------------------------------|
-| Calendarific       | Holidays         | Yes          | [calendarific.com](https://calendarific.com/)  |
-| WeatherAPI         | Weather          | Yes          | [weatherapi.com](https://weatherapi.com/)      |
-| Electricity Maps   | Carbon Intensity | Yes          | [electricitymaps.com](https://electricitymaps.com/) |
+| Endpoint                | Data Type         | Auth Required | Example URL                                  |
+|-------------------------|------------------|--------------|----------------------------------------------|
+| `/holidays`             | Holidays         | No           | `/holidays?year=2025`                        |
+| `/weather`              | Weather          | No           | `/weather`                                   |
+| `/carbon-intensity`     | Carbon Intensity | No           | `/carbon-intensity?datetime=2025-09-25T17:06`|
 
 ---
 
