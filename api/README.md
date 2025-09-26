@@ -4,6 +4,23 @@ Easily fetch **holidays**, **weather**, and **carbon intensity** for Delhi using
 
 ---
 
+## ⚡ FastAPI
+
+This project uses the [FastAPI](https://fastapi.tiangolo.com/) package for building APIs.
+
+**Install FastAPI and Uvicorn (for running the server):**
+```sh
+pip install fastapi uvicorn
+```
+
+**Run the API server:**
+```sh
+uvicorn main:app --reload
+```
+*(Replace `main:app` with your actual entrypoint if different.)*
+
+---
+
 ## 1️⃣ `/holidays` – Delhi Holidays & Observances
 
 **Endpoint:**  
@@ -29,7 +46,7 @@ print(response.json())
   "location": "Delhi",
   "holidays": [
     {"date": "2025-01-26", "name": "Republic Day", "type": "public"},
-    {"date": "2025-08-15", "name": "Independence Day", "type": "public"},
+    {"date": "2025-08-15", "name": "Independence Day", "type": "public"}
     // ...more holidays...
   ]
 }
