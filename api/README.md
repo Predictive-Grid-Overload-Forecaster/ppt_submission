@@ -1,6 +1,6 @@
 # 🚀 Delhi Data APIs: Quick Usage Guide
 
-Easily fetch **holidays**, **weather**, and **carbon intensity** for Delhi using these APIs. Each section includes a sample JavaScript fetch snippet.
+Easily fetch **holidays**, **weather**, and **carbon intensity** for Delhi using these APIs. Each section includes a sample Python `requests` snippet.
 
 ---
 
@@ -13,13 +13,14 @@ Easily fetch **holidays**, **weather**, and **carbon intensity** for Delhi using
 - 🗓️ Public, bank, and regional holidays  
 - 🛑 Observances (weekends, festivals, special days)
 
-**Sample Fetch:**
-```javascript
-const calendarificKey = "YOUR_API_KEY";
-fetch(`https://calendarific.com/api/v2/holidays?api_key=${calendarificKey}&country=IN&location=Delhi&year=2025`)
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(console.error);
+**Sample Fetch (Python):**
+```python
+import requests
+
+calendarific_key = "YOUR_API_KEY"
+url = f"https://calendarific.com/api/v2/holidays?api_key={calendarific_key}&country=IN&location=Delhi&year=2025"
+response = requests.get(url)
+print(response.json())
 ```
 
 ---
@@ -36,13 +37,14 @@ fetch(`https://calendarific.com/api/v2/holidays?api_key=${calendarificKey}&count
 - 🌧️ Precipitation  
 - 🌅 Sunrise & sunset times
 
-**Sample Fetch:**
-```javascript
-const weatherKey = "YOUR_API_KEY";
-fetch(`https://api.weatherapi.com/v1/current.json?key=${weatherKey}&q=Delhi`)
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(console.error);
+**Sample Fetch (Python):**
+```python
+import requests
+
+weather_key = "YOUR_API_KEY"
+url = f"https://api.weatherapi.com/v1/current.json?key={weather_key}&q=Delhi"
+response = requests.get(url)
+print(response.json())
 ```
 
 ---
@@ -56,15 +58,15 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=${weatherKey}&q=Delhi`)
 - ⚡ Carbon intensity (gCO₂/kWh)  
 - 🔄 Historical, real-time, and forecast data
 
-**Sample Fetch:**
-```javascript
-const electricityMapsKey = "YOUR_API_KEY";
-fetch(`https://api.electricitymaps.com/v3/carbon-intensity/past?datetime=2025-09-25+17%3A06`, {
-  headers: { "auth-token": electricityMapsKey }
-})
-  .then(res => res.json())
-  .then(data => console.log(data))
-  .catch(console.error);
+**Sample Fetch (Python):**
+```python
+import requests
+
+electricity_maps_key = "YOUR_API_KEY"
+headers = {"auth-token": electricity_maps_key}
+url = "https://api.electricitymaps.com/v3/carbon-intensity/past?datetime=2025-09-25+17%3A06"
+response = requests.get(url, headers=headers)
+print(response.json())
 ```
 
 ---
