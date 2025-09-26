@@ -1,74 +1,90 @@
-# 📚 API Usage Guide with Fetch Examples
+# 🚀 Delhi Data APIs: Quick Usage Guide
 
-This project fetches holidays, weather, and carbon intensity data for Delhi using three APIs.
+Easily fetch **holidays**, **weather**, and **carbon intensity** for Delhi using these APIs. Each section includes a sample JavaScript fetch snippet.
 
 ---
 
-## 1. Calendarific API – Holidays & Observances
+## 1️⃣ Calendarific API – Holidays & Observances
 
-**Endpoint:**
-https://calendarific.com/api/v2/holidays?&api_key=YOUR_API_KEY&country=IN&location=Delhi&year=2025
+**Endpoint:**  
+`https://calendarific.com/api/v2/holidays?api_key=YOUR_API_KEY&country=IN&location=Delhi&year=2025`
 
-p
+**Returns:**  
+- 🗓️ Public, bank, and regional holidays  
+- 🛑 Observances (weekends, festivals, special days)
 
-**Data You Get:**
-- 🗓️ Public, bank, and regional holidays
-- 🛑 Observances like weekends and special days
-
-**Fetch Example (JS):**
+**Sample Fetch:**
 ```javascript
-const calendarificKey = "3YqlfOm204SMAg5W55cRIQ0gqoxCQcpB";
-fetch(`https://calendarific.com/api/v2/holidays?&api_key=${calendarificKey}&country=IN&location=Delhi&year=2025`)
+const calendarificKey = "YOUR_API_KEY";
+fetch(`https://calendarific.com/api/v2/holidays?api_key=${calendarificKey}&country=IN&location=Delhi&year=2025`)
   .then(res => res.json())
   .then(data => console.log(data))
-  .catch(err => console.error(err));
+  .catch(console.error);
+```
 
 ---
 
-## 2. WeatherAPI – Current Weather in Delhi
+## 2️⃣ WeatherAPI – Delhi Weather
 
-**Endpoint:**
-https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=Delhi
+**Endpoint:**  
+`https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=Delhi`
 
+**Returns:**  
+- 🌡️ Temperature (°C/°F)  
+- 🌬️ Wind speed & direction  
+- ☁️ Cloud cover  
+- 🌧️ Precipitation  
+- 🌅 Sunrise & sunset times
 
-Data You Get:
-
-🌡️ Temperature (°C/°F)
-🌬️ Wind speed & direction
-☁️ Cloud cover
-🌧️ Precipitation info
-🌅 Sunrise & sunset times
-
-
-Fetch Example (JS):
-
-const weatherKey = "10f64e4346c64f569a2164222252609";
+**Sample Fetch:**
+```javascript
+const weatherKey = "YOUR_API_KEY";
 fetch(`https://api.weatherapi.com/v1/current.json?key=${weatherKey}&q=Delhi`)
   .then(res => res.json())
   .then(data => console.log(data))
-  .catch(err => console.error(err));
+  .catch(console.error);
+```
 
+---
 
-## 3. Electricity Maps – Carbon Intensity Data
+## 3️⃣ Electricity Maps – Carbon Intensity
 
+**Endpoint:**  
+`https://api.electricitymaps.com/v3/carbon-intensity/past?datetime=YYYY-MM-DD+HH%3AMM`
 
-** Endpoint: **
+**Returns:**  
+- ⚡ Carbon intensity (gCO₂/kWh)  
+- 🔄 Historical, real-time, and forecast data
 
-https://api.electricitymaps.com/v3/carbon-intensity/past?datetime=2025-09-25+17%3A06
-
-Data You Get:
-⚡ Carbon intensity in gCO₂/kWh
-🔄 Historical, real-time, and forecast data
-
-Fetch Example (JS):
-const electricityMapsKey = "HrPKJcgjOjMZt6yQn3N7";
+**Sample Fetch:**
+```javascript
+const electricityMapsKey = "YOUR_API_KEY";
 fetch(`https://api.electricitymaps.com/v3/carbon-intensity/past?datetime=2025-09-25+17%3A06`, {
-  headers: {
-    "auth-token": electricityMapsKey
-  }
+  headers: { "auth-token": electricityMapsKey }
 })
   .then(res => res.json())
   .then(data => console.log(data))
-  .catch(err => console.error(err));
+  .catch(console.error);
+```
 
+---
 
+## 📝 Notes
+
+- Replace `"YOUR_API_KEY"` with your actual API keys.
+- All endpoints are for **Delhi, India** and **year 2025** (where applicable).
+- For more details, see each API’s official documentation.
+
+---
+
+## 📦 Quick Reference
+
+| API                | Data Type         | Auth Required | Docs Link                                      |
+|--------------------|------------------|--------------|------------------------------------------------|
+| Calendarific       | Holidays         | Yes          | [calendarific.com](https://calendarific.com/)  |
+| WeatherAPI         | Weather          | Yes          | [weatherapi.com](https://weatherapi.com/)      |
+| Electricity Maps   | Carbon Intensity | Yes          | [electricitymaps.com](https://electricitymaps.com/) |
+
+---
+
+Happy coding! 🎉
