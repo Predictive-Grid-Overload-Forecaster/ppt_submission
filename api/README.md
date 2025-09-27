@@ -137,4 +137,3 @@ print(response.json())
 
 ---
 
-Happy coding! 🎉
