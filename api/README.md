@@ -15,7 +15,8 @@ Easily fetch **holidays**, **weather**, and **carbon intensity** for Delhi using
 
 **Sample Fetch:**
 ```javascript
-const calendarificKey = "YOUR_API_KEY";
+const calendarificKey = "3YqlfOm204SMAg5W55cRIQ0gqoxCQcpB
+";
 fetch(`https://calendarific.com/api/v2/holidays?api_key=${calendarificKey}&country=IN&location=Delhi&year=2025`)
   .then(res => res.json())
   .then(data => console.log(data))
@@ -38,7 +39,7 @@ fetch(`https://calendarific.com/api/v2/holidays?api_key=${calendarificKey}&count
 
 **Sample Fetch:**
 ```javascript
-const weatherKey = "YOUR_API_KEY";
+const weatherKey = "10f64e4346c64f569a2164222252609";
 fetch(`https://api.weatherapi.com/v1/current.json?key=${weatherKey}&q=Delhi`)
   .then(res => res.json())
   .then(data => console.log(data))
@@ -58,7 +59,7 @@ fetch(`https://api.weatherapi.com/v1/current.json?key=${weatherKey}&q=Delhi`)
 
 **Sample Fetch:**
 ```javascript
-const electricityMapsKey = "YOUR_API_KEY";
+const electricityMapsKey = "HrPKJcgjOjMZt6yQn3N7";
 fetch(`https://api.electricitymaps.com/v3/carbon-intensity/past?datetime=2025-09-25+17%3A06`, {
   headers: { "auth-token": electricityMapsKey }
 })
@@ -71,7 +72,6 @@ fetch(`https://api.electricitymaps.com/v3/carbon-intensity/past?datetime=2025-09
 
 ## 📝 Notes
 
-- Replace `"YOUR_API_KEY"` with your actual API keys.
 - All endpoints are for **Delhi, India** and **year 2025** (where applicable).
 - For more details, see each API’s official documentation.
 
