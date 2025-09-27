@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Renewable Energy Dashboard</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "eco-dark": "#1a1a1a",
+                    "electric-blue": "#00ffff",
+                    "soft-green": "#66ff99",
+                    "eco-green-high": "#2ca02c",
+                    "eco-yellow-mid": "#f9a825",
+                    "eco-red-low": "#e53935",
+                },
+                fontFamily: {
+                    display: ["Space Grotesk", "sans-serif"],
+                    body: ["Roboto", "sans-serif"],
+                },
+                boxShadow: {
+                    "glow-blue": "0 0 20px rgba(0, 255, 255, 0.6), 0 0 5px rgba(0, 255, 255, 0.4)",
+                    "glow-green": "0 0 20px rgba(102, 255, 153, 0.6), 0 0 5px rgba(102, 255, 153, 0.4)",
+                },
+                transitionTimingFunction: {
+                    "eco-ease": "cubic-bezier(0.25, 0.1, 0.25, 1)"
+                },
+                borderRadius: {
+                    DEFAULT: "0.5rem",
+                    lg: "1rem",
+                    xl: "1.5rem",
+                    full: "9999px"
+                }
+            }
+        }
+    };</script>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a1a;
+            overflow: hidden;
+        }
+        .glassmorphism {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .map-zone {
+            transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .map-zone:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        .zone-high { background-color: rgba(44, 160, 44, 0.7); box-shadow: 0 0 15px rgba(44, 160, 44, 0.8); }
+        .zone-mid { background-color: rgba(249, 168, 37, 0.7); box-shadow: 0 0 15px rgba(249, 168, 37, 0.8); }
+        .zone-low { background-color: rgba(229, 57, 53, 0.7); box-shadow: 0 0 15px rgba(229, 57, 53, 0.8); }
+        .zone-high:hover { box-shadow: 0 0 25px rgba(102, 255, 153, 1); }
+        .zone-mid:hover { box-shadow: 0 0 25px rgba(249, 168, 37, 1); }
+        .zone-low:hover { box-shadow: 0 0 25px rgba(229, 57, 53, 1); }
+        .map-tooltip {
+            display: none;
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+        }
+        .map-zone:hover .map-tooltip {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-eco-dark font-body text-white/90">
+<div class="flex h-screen">
+<main class="flex-1 flex flex-col p-6 gap-6 relative">
+<header class="flex justify-between items-center z-10">
+<div>
+<h1 class="text-3xl font-bold font-display text-white">Renewable Energy Dashboard</h1>
+<p class="text-white/60 font-light">City Map View</p>
+</div>
+<div class="glassmorphism rounded-xl p-2 flex items-center gap-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-electric-blue">calendar_today</span>
+<select class="form-select bg-transparent border-none focus:ring-0 text-white/80">
+<option>Last 24h</option>
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+</select>
+</div>
+<div class="h-6 w-px bg-white/20"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-soft-green">energy_savings_leaf</span>
+<select class="form-select bg-transparent border-none focus:ring-0 text-white/80">
+<option>All Sources</option>
+<option>Solar</option>
+<option>Wind</option>
+<option>Hydro</option>
+</select>
+</div>
+</div>
+</header>
+<div class="flex-1 grid grid-cols-3 gap-6">
+<div class="col-span-2 glassmorphism rounded-2xl p-4 flex items-center justify-center relative overflow-hidden">
+<img alt="City Map" class="absolute inset-0 w-full h-full object-cover opacity-20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuABDfuTlOjgRxOj7pBehucIfuKu0YdCunJebU5miLfrJ_SGVvLMAvAaudSMGGeDyd57ChIbB3ZMl8VcbE3xdua4H_aMuxLD4w4KQT62R4Ad1yCV7gJ4Bqni7c95gfIIfen7J5Y2o1hkNyV2Vj3G4sGxDc8s1eVW8AAfkimOYOjoN0oL-Yi0-8p40EoaomXg_lXNhqe-BwEmrw7J0pB0uOwgfgfYUXF_naTm_G_cGFNuYF-_CjFEO4XiJhU1YshR0QE34se1CVtQSqw"/>
+<div class="relative w-full h-full">
+<div class="map-zone zone-high" style="top: 20%; left: 30%; width: 120px; height: 120px;">
+<div class="flex items-center justify-center h-full text-white font-bold text-lg">85%</div>
+<div class="map-tooltip w-64 glassmorphism rounded-lg p-4 shadow-lg text-sm">
+<h4 class="font-bold text-soft-green">Downtown Core</h4>
+<p>Renewable Share: <span class="font-bold">85%</span></p>
+<p>Capacity: <span class="font-bold">500 MW</span></p>
+<p>Trend: <span class="text-soft-green flex items-center"><span class="material-symbols-outlined text-sm">trending_up</span> +5%</span></p>
+</div>
+</div>
+<div class="map-zone zone-mid" style="top: 55%; left: 50%; width: 100px; height: 100px;">
+<div class="flex items-center justify-center h-full text-white font-bold text-lg">55%</div>
+<div class="map-tooltip w-64 glassmorphism rounded-lg p-4 shadow-lg text-sm">
+<h4 class="font-bold text-eco-yellow-mid">Industrial Park</h4>
+<p>Renewable Share: <span class="font-bold">55%</span></p>
+<p>Capacity: <span class="font-bold">350 MW</span></p>
+<p>Trend: <span class="text-white/80 flex items-center"><span class="material-symbols-outlined text-sm">trending_flat</span> +1%</span></p>
+</div>
+</div>
+<div class="map-zone zone-low" style="top: 40%; left: 75%; width: 80px; height: 80px;">
+<div class="flex items-center justify-center h-full text-white font-bold text-lg">25%</div>
+<div class="map-tooltip w-64 glassmorphism rounded-lg p-4 shadow-lg text-sm">
+<h4 class="font-bold text-eco-red-low">Suburban Area</h4>
+<p>Renewable Share: <span class="font-bold">25%</span></p>
+<p>Capacity: <span class="font-bold">200 MW</span></p>
+<p>Trend: <span class="text-eco-red-low flex items-center"><span class="material-symbols-outlined text-sm">trending_down</span> -2%</span></p>
+</div>
+</div>
+<div class="map-zone zone-high" style="top: 70%; left: 20%; width: 90px; height: 90px;">
+<div class="flex items-center justify-center h-full text-white font-bold text-lg">92%</div>
+<div class="map-tooltip w-64 glassmorphism rounded-lg p-4 shadow-lg text-sm">
+<h4 class="font-bold text-soft-green">Hydro Dam District</h4>
+<p>Renewable Share: <span class="font-bold">92%</span></p>
+<p>Capacity: <span class="font-bold">800 MW</span></p>
+<p>Trend: <span class="text-soft-green flex items-center"><span class="material-symbols-outlined text-sm">trending_up</span> +3%</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-1 flex flex-col gap-6">
+<div class="glassmorphism rounded-2xl p-6 flex-1 flex flex-col shadow-glow-blue">
+<h3 class="text-2xl font-bold font-display text-white mb-4">Energy Mix</h3>
+<div class="flex-1 flex items-center justify-center">
+<div class="relative w-48 h-48">
+<svg class="w-full h-full" viewBox="0 0 36 36">
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#66ff99" stroke-dasharray="60, 40" stroke-width="4"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke="#00ffff" stroke-dasharray="30, 70" stroke-dashoffset="-60" stroke-width="4"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke="#f9a825" stroke-dasharray="10, 90" stroke-dashoffset="-90" stroke-width="4"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center flex-col">
+<span class="text-3xl font-bold text-white">65%</span>
+<span class="text-sm text-white/60">Renewable</span>
+</div>
+</div>
+</div>
+<div class="flex justify-around text-center text-sm mt-4">
+<div class="flex items-center gap-2"> <div class="w-3 h-3 rounded-full bg-soft-green"></div> Solar (60%) </div>
+<div class="flex items-center gap-2"> <div class="w-3 h-3 rounded-full bg-electric-blue"></div> Wind (30%) </div>
+<div class="flex items-center gap-2"> <div class="w-3 h-3 rounded-full bg-eco-yellow-mid"></div> Hydro (10%) </div>
+</div>
+</div>
+<div class="glassmorphism rounded-2xl p-6 flex-1 flex flex-col shadow-glow-green">
+<h3 class="text-2xl font-bold font-display text-white mb-4">Renewable Growth</h3>
+<div class="flex-1 relative">
+<svg class="absolute inset-0 w-full h-full" fill="none" preserveAspectRatio="none" viewBox="0 0 200 100">
+<defs>
+<linearGradient id="growth-chart-gradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:rgba(102, 255, 153, 0.4)"></stop>
+<stop offset="100%" style="stop-color:rgba(102, 255, 153, 0)"></stop>
+</linearGradient>
+</defs>
+<path d="M0 80 C 20 80, 40 40, 60 50 C 80 60, 100 20, 120 30 C 140 40, 160 10, 180 20 L 200 15 V 100 H 0 Z" fill="url(#growth-chart-gradient)"></path>
+<path d="M0 80 C 20 80, 40 40, 60 50 C 80 60, 100 20, 120 30 C 140 40, 160 10, 180 20 L 200 15" filter="url(#glow-filter-green)" stroke="#66ff99" stroke-width="2"></path>
+</svg>
+</div>
+<p class="text-center text-sm text-white/60 mt-2">Growth over last 12 months</p>
+</div>
+</div>
+</div>
+<footer class="flex justify-center items-center z-10">
+<div class="glassmorphism rounded-xl p-2 flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-electric-blue/20 text-electric-blue hover:bg-electric-blue/40 transition-all duration-300 shadow-glow-blue">
+<span class="material-symbols-outlined">solar_power</span>
+<span>Increase Solar by 10%</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-lg bg-soft-green/20 text-soft-green hover:bg-soft-green/40 transition-all duration-300 shadow-glow-green">
+<span class="material-symbols-outlined">air</span>
+<span>Simulate Wind Drop</span>
+</button>
+</div>
+</footer>
+</main>
+</div>
+
+</body></html>

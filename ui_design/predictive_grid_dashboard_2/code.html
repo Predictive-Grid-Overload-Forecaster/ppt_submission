@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stitch Design</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "eco-dark": "#121212",
+                        "electric-blue": "#00ffff",
+                        "soft-green": "#66ff99",
+                        "eco-red": "#ff4d4d",
+                        "eco-orange": "#ffa726",
+                        "eco-green": "#28a745",
+                        "primary": "#0d8bf2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101a22"
+                    },
+                    fontFamily: {
+                        display: "Space Grotesk",
+                        body: 'Roboto'
+                    },
+                    boxShadow: {
+                        "glow-blue": "0 0 20px rgba(0, 255, 255, 0.6), 0 0 5px rgba(0, 255, 255, 0.4)",
+                        "glow-green": "0 0 20px rgba(102, 255, 153, 0.6), 0 0 5px rgba(102, 255, 153, 0.4)",
+                        "glow-red": "0 0 15px rgba(255, 77, 77, 0.7), 0 0 5px rgba(255, 77, 77, 0.5)",
+                        "glow-orange": "0 0 15px rgba(255, 167, 38, 0.6), 0 0 5px rgba(255, 167, 38, 0.4)"
+                    },
+                    transitionTimingFunction: {
+                        "eco-ease": "cubic-bezier(0.25, 0.1, 0.25, 1)"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        lg: "1rem",
+                        xl: "1.5rem",
+                        full: "9999px"
+                    },
+                    animation: {
+                        'pulse-red': 'pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'pulse-red': {
+                            '0%, 100%': { opacity: 1, boxShadow: '0 0 15px rgba(255, 77, 77, 0.7), 0 0 5px rgba(255, 77, 77, 0.5)'},
+                            '50%': { opacity: .8, boxShadow: '0 0 25px rgba(255, 77, 77, 1), 0 0 10px rgba(255, 77, 77, 0.8)' },
+                        }
+                    }
+                }
+            }
+        };</script>
+<style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+        }
+        .glassmorphism {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .glassmorphism::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150px;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transform: translateX(-200px) skewX(-25deg);
+            transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+            pointer-events: none;
+        }
+        .glassmorphism:hover::before {
+            transform: translateX(calc(100% + 200px)) skewX(-25deg);
+        }
+        .nav-link {
+            transition: all 0.3s var(--eco-ease);
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: rgba(0, 255, 255, 0.1);
+            box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+        .nav-link .icon,
+        .nav-link .nav-text {
+            transition: all 0.3s var(--eco-ease);
+        }
+        .nav-link:hover .icon,
+        .nav-link:hover .nav-text {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        .nav-link.active .icon,
+        .nav-link.active .nav-text {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        .particle-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            background: #00ffff;
+            border-radius: 50%;
+            opacity: 0;
+            animation: rise 15s infinite ease-in;
+        }
+        @keyframes rise {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1);
+                opacity: 0;
+            }
+        }
+        .alert-card.critical:hover {
+            box-shadow: 0 0 25px rgba(255, 77, 77, 0.7), 0 0 10px rgba(255, 77, 77, 0.5);
+        }
+        .alert-card.warning:hover {
+            box-shadow: 0 0 25px rgba(255, 167, 38, 0.6), 0 0 10px rgba(255, 167, 38, 0.4);
+        }
+        .alert-card.resolved:hover {
+            box-shadow: 0 0 25px rgba(40, 167, 69, 0.6), 0 0 10px rgba(40, 167, 69, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-eco-dark font-body text-white/90">
+<div class="particle-bg"></div>
+<div class="flex min-h-screen">
+<aside class="w-64 flex-shrink-0 p-4">
+<div class="h-full flex flex-col gap-12 glassmorphism rounded-2xl">
+<div class="flex flex-col items-center p-6 text-center">
+<h1 class="text-3xl font-bold text-soft-green tracking-wider font-display">GridWise</h1>
+<p class="text-xs text-white/50 font-light">AI Predictive Forecaster</p>
+</div>
+<nav class="flex flex-col gap-4 px-4">
+<a class="nav-link flex items-center gap-4 p-3 rounded-lg" href="#">
+<span class="material-symbols-outlined icon text-white/70">dashboard</span>
+<span class="nav-text font-medium text-white/70">Dashboard</span>
+</a>
+<a class="nav-link flex items-center gap-4 p-3 rounded-lg" href="#">
+<span class="material-symbols-outlined icon text-white/70">map</span>
+<span class="nav-text font-medium text-white/70">Energy Map</span>
+</a>
+<a class="nav-link flex items-center gap-4 p-3 rounded-lg" href="#">
+<span class="material-symbols-outlined icon text-white/70">solar_power</span>
+<span class="nav-text font-medium text-white/70">Renewables</span>
+</a>
+<a class="nav-link active flex items-center gap-4 p-3 rounded-lg" href="#">
+<span class="material-symbols-outlined icon text-white/70">notifications_active</span>
+<span class="nav-text font-medium text-white/70">Alerts</span>
+</a>
+<a class="nav-link flex items-center gap-4 p-3 rounded-lg" href="#">
+<span class="material-symbols-outlined icon text-white/70">settings</span>
+<span class="nav-text font-medium text-white/70">Settings</span>
+</a>
+</nav>
+</div>
+</aside>
+<main class="flex-1 p-8 overflow-y-auto">
+<div class="space-y-8">
+<div class="flex items-center gap-3">
+<h2 class="text-4xl font-bold text-white font-display">Live Alerts &amp; Notifications</h2>
+<span class="text-4xl text-eco-red -mt-1">⚡</span>
+</div>
+<div class="glassmorphism rounded-2xl p-6 flex flex-col md:flex-row gap-6 items-center">
+<div class="flex-1 w-full">
+<label class="text-sm font-medium text-white/70" for="filter-severity">Severity</label>
+<select class="form-select mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset text-white/80 h-12 transition-all duration-300" id="filter-severity">
+<option>All Severities</option>
+<option>Critical</option>
+<option>Warning</option>
+<option>Resolved</option>
+</select>
+</div>
+<div class="flex-1 w-full">
+<label class="text-sm font-medium text-white/70" for="filter-zone">Zone</label>
+<select class="form-select mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset text-white/80 h-12 transition-all duration-300" id="filter-zone">
+<option>All Zones</option>
+<option>Zone A</option>
+<option>Zone B</option>
+<option>Zone C</option>
+</select>
+</div>
+<div class="flex-1 w-full">
+<label class="text-sm font-medium text-white/70" for="filter-date">Date</label>
+<input class="form-input mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset text-white/80 h-12 transition-all duration-300" id="filter-date" type="date"/>
+</div>
+</div>
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+<div class="xl:col-span-2 space-y-4">
+<div class="alert-card critical glassmorphism rounded-xl p-5 flex flex-col sm:flex-row items-start gap-4 border-l-4 border-eco-red shadow-glow-red animate-pulse-red transition-all duration-300 ease-in-out cursor-pointer">
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-2">
+<span class="px-3 py-1 text-sm font-semibold rounded-full bg-eco-red/20 text-eco-red">Critical</span>
+<span class="text-xs text-white/60">2 min ago</span>
+</div>
+<h3 class="text-lg font-bold text-white/90">Potential Outage Detected</h3>
+<p class="text-sm text-white/70">Zone B - Substation 5</p>
+</div>
+<button class="mt-2 sm:mt-0 w-full sm:w-auto px-4 py-2 text-sm font-medium rounded-lg bg-electric-blue/20 text-electric-blue hover:bg-electric-blue/40 transition-colors">Details</button>
+</div>
+<div class="alert-card warning glassmorphism rounded-xl p-5 flex flex-col sm:flex-row items-start gap-4 border-l-4 border-eco-orange shadow-glow-orange transition-all duration-300 ease-in-out cursor-pointer">
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-2">
+<span class="px-3 py-1 text-sm font-semibold rounded-full bg-eco-orange/20 text-eco-orange">Warning</span>
+<span class="text-xs text-white/60">15 min ago</span>
+</div>
+<h3 class="text-lg font-bold text-white/90">Grid Overload Warning</h3>
+<p class="text-sm text-white/70">Zone A - Industrial Sector</p>
+</div>
+<button class="mt-2 sm:mt-0 w-full sm:w-auto px-4 py-2 text-sm font-medium rounded-lg bg-electric-blue/20 text-electric-blue hover:bg-electric-blue/40 transition-colors">Details</button>
+</div>
+<div class="alert-card resolved glassmorphism rounded-xl p-5 flex flex-col sm:flex-row items-start gap-4 border-l-4 border-eco-green transition-all duration-300 ease-in-out cursor-pointer">
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-2">
+<span class="px-3 py-1 text-sm font-semibold rounded-full bg-eco-green/20 text-eco-green">Resolved</span>
+<span class="text-xs text-white/60">1 hour ago</span>
+</div>
+<h3 class="text-lg font-bold text-white/90">Scheduled Maintenance Completed</h3>
+<p class="text-sm text-white/70">Zone C - Residential Area</p>
+</div>
+<button class="mt-2 sm:mt-0 w-full sm:w-auto px-4 py-2 text-sm font-medium rounded-lg bg-electric-blue/20 text-electric-blue hover:bg-electric-blue/40 transition-colors">Details</button>
+</div>
+<div class="alert-card warning glassmorphism rounded-xl p-5 flex flex-col sm:flex-row items-start gap-4 border-l-4 border-eco-orange shadow-glow-orange transition-all duration-300 ease-in-out cursor-pointer">
+<div class="flex-grow">
+<div class="flex justify-between items-center mb-2">
+<span class="px-3 py-1 text-sm font-semibold rounded-full bg-eco-orange/20 text-eco-orange">Warning</span>
+<span class="text-xs text-white/60">3 hours ago</span>
+</div>
+<h3 class="text-lg font-bold text-white/90">Transformer Temp Anomaly</h3>
+<p class="text-sm text-white/70">Zone B - Substation 2</p>
+</div>
+<button class="mt-2 sm:mt-0 w-full sm:w-auto px-4 py-2 text-sm font-medium rounded-lg bg-electric-blue/20 text-electric-blue hover:bg-electric-blue/40 transition-colors">Details</button>
+</div>
+</div>
+<div class="xl:col-span-1 space-y-6">
+<div class="glassmorphism rounded-2xl p-6 shadow-glow-blue">
+<h3 class="text-2xl font-bold text-white/90 mb-4 font-display">Alert Details</h3>
+<div class="space-y-4">
+<div>
+<h4 class="text-lg font-semibold text-eco-red">Potential Outage Detected</h4>
+<p class="text-sm text-white/60">Zone B - Substation 5</p>
+</div>
+<div class="h-48 w-full bg-black/30 rounded-lg overflow-hidden relative">
+<img alt="Map of affected area" class="w-full h-full object-cover opacity-30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUeomTAWjA_G4G1QUNTe-FqfBa8X9xIFjddMhoLErQ_VQLRui1K1R_mBmPzQmzl9y10KD6IKJFcNMmXFeDFFuPhThFtGPsvgs1uEi6I9AFRt8OY_W7eW-7lZhwLwSc24jCv2KcZUsIuDhSphNoO-T9NqGOrXSXkSibh5cZjUFzaMVQxEBEpO9As_HGQZmxRruSA9YphEIIxb6uP6bam_TH5SsGhYhfmwjBIVIB444T-3ZQrUlceW_Pl-7fPDKUEKit3bqDYa3bABY"/>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="w-8 h-8 rounded-full bg-eco-red/50 flex items-center justify-center animate-ping">
+<div class="w-4 h-4 rounded-full bg-eco-red"></div>
+</div>
+</div>
+</div>
+<div>
+<p><span class="font-semibold text-white/80">Affected Zones:</span> <span class="text-white/70">Zone B, parts of Zone C</span></p>
+<p><span class="font-semibold text-white/80">Est. Duration:</span> <span class="text-white/70">30-60 minutes</span></p>
+<p><span class="font-semibold text-white/80">Suggested Action:</span> <span class="text-white/70">Dispatch crew to inspect Substation 5. Reroute power from Zone A.</span></p>
+</div>
+<div class="flex gap-4 pt-2">
+<button class="flex-1 px-4 py-2 text-sm font-medium rounded-lg bg-soft-green/20 text-soft-green hover:bg-soft-green/40 transition-colors">Acknowledge</button>
+<button class="flex-1 px-4 py-2 text-sm font-medium rounded-lg bg-electric-blue/20 text-electric-blue hover:bg-electric-blue/40 transition-colors">Resolve</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<script>
+    const particleContainer = document.querySelector('.particle-bg');
+    for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = `${Math.random() * 100}vw`;
+        particle.style.width = `${Math.random() * 3 + 1}px`;
+        particle.style.height = particle.style.width;
+        particle.style.animationDelay = `${Math.random() * 15}s`;
+        particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+        if (Math.random() > 0.5) {
+            particle.style.background = '#66ff99';
+        }
+        particleContainer.appendChild(particle);
+    }
+</script>
+
+</body></html>
