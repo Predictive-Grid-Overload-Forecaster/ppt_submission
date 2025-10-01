@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Stitch Design</title>
-<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
-<script>tailwind.config = {darkMode: "class", theme: {extend: {colors: {"eco-dark": "#1a1a1a", "electric-blue": "#00ffff", "soft-green": "#66ff99", "eco-green": "#2ca02c", "eco-yellow": "#f9a825", "eco-red": "#e53935", primary: "#0d8bf2", "background-light": "#f5f7f8", "background-dark": "#101a22"}, fontFamily: {display: "Space Grotesk"}, boxShadow: {"glow-blue": "0 0 20px rgba(0, 255, 255, 0.6), 0 0 5px rgba(0, 255, 255, 0.4)", "glow-green": "0 0 20px rgba(102, 255, 153, 0.6), 0 0 5px rgba(102, 255, 153, 0.4)", "glow-red": "0 0 15px rgba(229, 57, 53, 0.5), 0 0 5px rgba(229, 57, 53, 0.3)", "glow-yellow": "0 0 15px rgba(249, 168, 37, 0.5), 0 0 5px rgba(249, 168, 37, 0.3)"}, transitionTimingFunction: {"eco-ease": "cubic-bezier(0.25, 0.1, 0.25, 1)"}, borderRadius: {DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", full: "9999px"}}}};</script>
-<style>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Stitch Design</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>tailwind.config = { darkMode: "class", theme: { extend: { colors: { "eco-dark": "#1a1a1a", "electric-blue": "#00ffff", "soft-green": "#66ff99", "eco-green": "#2ca02c", "eco-yellow": "#f9a825", "eco-red": "#e53935", primary: "#0d8bf2", "background-light": "#f5f7f8", "background-dark": "#101a22" }, fontFamily: { display: "Space Grotesk" }, boxShadow: { "glow-blue": "0 0 20px rgba(0, 255, 255, 0.6), 0 0 5px rgba(0, 255, 255, 0.4)", "glow-green": "0 0 20px rgba(102, 255, 153, 0.6), 0 0 5px rgba(102, 255, 153, 0.4)", "glow-red": "0 0 15px rgba(229, 57, 53, 0.5), 0 0 5px rgba(229, 57, 53, 0.3)", "glow-yellow": "0 0 15px rgba(249, 168, 37, 0.5), 0 0 5px rgba(249, 168, 37, 0.3)" }, transitionTimingFunction: { "eco-ease": "cubic-bezier(0.25, 0.1, 0.25, 1)" }, borderRadius: { DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", full: "9999px" } } } };</script>
+    <style>
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #1a1a1a;
         }
+
         .glassmorphism {
             background: rgba(26, 26, 26, 0.5);
             backdrop-filter: blur(12px);
@@ -24,6 +28,7 @@
             position: relative;
             overflow: hidden;
         }
+
         .glassmorphism::before {
             content: '';
             position: absolute;
@@ -31,36 +36,45 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(0,255,255,0.1) 0%, rgba(0,255,255,0) 40%);
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, rgba(0, 255, 255, 0) 40%);
             transform: rotate(0deg);
             transition: transform 1s ease-in-out;
             opacity: 0;
             pointer-events: none;
         }
+
         .glassmorphism:hover::before {
             opacity: 1;
             transform: rotate(360deg);
         }
+
         .nav-link {
             transition: all 0.3s var(--eco-ease);
         }
-        .nav-link:hover, .nav-link.active {
+
+        .nav-link:hover,
+        .nav-link.active {
             background-color: rgba(0, 255, 255, 0.1);
             box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.3);
         }
-        .nav-link .icon, .nav-link .nav-text {
+
+        .nav-link .icon,
+        .nav-link .nav-text {
             transition: all 0.3s var(--eco-ease);
         }
+
         .nav-link:hover .icon,
         .nav-link:hover .nav-text {
             color: #00ffff;
             text-shadow: 0 0 10px #00ffff;
         }
+
         .nav-link.active .icon,
         .nav-link.active .nav-text {
             color: #00ffff;
             text-shadow: 0 0 10px #00ffff;
         }
+
         .particle-bg {
             position: fixed;
             top: 0;
@@ -70,6 +84,7 @@
             z-index: -1;
             overflow: hidden;
         }
+
         .particle {
             position: absolute;
             background: #00ffff;
@@ -77,11 +92,13 @@
             opacity: 0;
             animation: rise 15s infinite ease-in;
         }
+
         @keyframes rise {
             0% {
                 transform: translateY(100vh) scale(0);
                 opacity: 0.5;
             }
+
             100% {
                 transform: translateY(-10vh) scale(1);
                 opacity: 0;
@@ -89,190 +106,226 @@
         }
     </style>
 </head>
+
 <body class="bg-eco-dark font-display text-white/90">
-<div class="particle-bg"></div>
-<div class="flex min-h-screen">
-<aside class="w-64 flex-shrink-0 p-4">
-<div class="h-full flex flex-col gap-12 glassmorphism rounded-2xl">
-<div class="flex flex-col items-center p-6 text-center">
-<h1 class="text-3xl font-bold text-soft-green tracking-wider">GridWise</h1>
-<p class="text-xs text-white/50 font-light">AI Predictive Forecaster</p>
-</div>
-<nav class="flex flex-col gap-4 px-4">
-<a class="nav-link active flex items-center gap-4 p-3 rounded-lg" href="#">
-<span class="material-symbols-outlined icon text-white/70">eco</span>
-<span class="nav-text font-medium text-white/70">Dashboard</span>
-</a>
-<a class="nav-link flex items-center gap-4 p-3 rounded-lg" href="#">
-<span class="material-symbols-outlined icon text-white/70">water_drop</span>
-<span class="nav-text font-medium text-white/70">Energy Map</span>
-</a>
-<a class="nav-link flex items-center gap-4 p-3 rounded-lg" href="#">
-<span class="material-symbols-outlined icon text-white/70">solar_power</span>
-<span class="nav-text font-medium text-white/70">Renewables</span>
-</a>
-<a class="nav-link flex items-center gap-4 p-3 rounded-lg" href="#">
-<span class="material-symbols-outlined icon text-white/70">notifications</span>
-<span class="nav-text font-medium text-white/70">Alerts</span>
-</a>
-<a class="nav-link flex items-center gap-4 p-3 rounded-lg" href="#">
-<span class="material-symbols-outlined icon text-white/70">settings</span>
-<span class="nav-text font-medium text-white/70">Settings</span>
-</a>
-</nav>
-</div>
-</aside>
-<main class="flex-1 p-8 overflow-y-auto">
-<div class="space-y-8">
-<div>
-<h2 class="text-4xl font-bold text-white">Dashboard</h2>
-<p class="text-white/60 font-light">Real-time energy insights for a sustainable future.</p>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-<div class="lg:col-span-3 glassmorphism rounded-2xl p-6 shadow-glow-blue">
-<div class="flex justify-between items-start mb-4">
-<div>
-<p class="text-white/80 font-medium">Real-time Energy Demand</p>
-<p class="text-5xl font-bold text-electric-blue">12,500 MW</p>
-</div>
-<div class="flex items-center gap-2 text-soft-green font-medium">
-<span class="material-symbols-outlined">trending_up</span>
-<span>+2.5%</span>
-</div>
-</div>
-<div class="h-80 relative">
-<svg class="absolute inset-0 w-full h-full" fill="none" preserveaspectratio="none" viewbox="-3 0 478 170" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<lineargradient id="chart-gradient-blue" x1="0%" x2="0%" y1="0%" y2="100%">
-<stop offset="0%" style="stop-color:rgba(0, 255, 255, 0.3)"></stop>
-<stop offset="100%" style="stop-color:rgba(0, 255, 255, 0)"></stop>
-</lineargradient>
-<lineargradient id="chart-gradient-green" x1="0%" x2="0%" y1="0%" y2="100%">
-<stop offset="0%" style="stop-color:rgba(102, 255, 153, 0.4)"></stop>
-<stop offset="100%" style="stop-color:rgba(102, 255, 153, 0)"></stop>
-</lineargradient>
-<filter height="200%" id="glow-filter-blue" width="200%" x="-50%" y="-50%">
-<fegaussianblur in="SourceGraphic" result="blur" stddeviation="4"></fegaussianblur>
-<fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite>
-</filter>
-<filter height="200%" id="glow-filter-green" width="200%" x="-50%" y="-50%">
-<fegaussianblur in="SourceGraphic" result="blur" stddeviation="4"></fegaussianblur>
-<fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite>
-</filter>
-</defs>
-<path d="M0 130C18.1538 130 18.1538 41 36.3077 41C54.4615 41 54.4615 61 72.6154 61C90.7692 61 90.7692 113 108.923 113C127.077 113 127.077 53 145.231 53C163.385 53 163.385 121 181.538 121C199.692 121 199.692 81 217.846 81C236 81 236 65 254.154 65C272.308 65 272.308 141 290.462 141C308.615 141 308.615 169 326.769 169C344.923 169 344.923 21 363.077 21C381.231 21 381.231 101 399.385 101C417.538 101 417.538 149 435.692 149C453.846 149 453.846 45 472 45V169H0V130Z" fill="url(#chart-gradient-green)"></path>
-<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H0V109Z" fill="url(#chart-gradient-blue)"></path>
-<path d="M0 130C18.1538 130 18.1538 41 36.3077 41C54.4615 41 54.4615 61 72.6154 61C90.7692 61 90.7692 113 108.923 113C127.077 113 127.077 53 145.231 53C163.385 53 163.385 121 181.538 121C199.692 121 199.692 81 217.846 81C236 81 236 65 254.154 65C272.308 65 272.308 141 290.462 141C308.615 141 308.615 169 326.769 169C344.923 169 344.923 21 363.077 21C381.231 21 381.231 101 399.385 101C417.538 101 417.538 149 435.692 149C453.846 149 453.846 45 472 45" filter="url(#glow-filter-green)" stroke="#66ff99" stroke-dasharray="5 5" stroke-linecap="round" stroke-width="3"></path>
-<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" filter="url(#glow-filter-blue)" stroke="#00ffff" stroke-linecap="round" stroke-width="3"></path>
-</svg>
-</div>
-</div>
-</div>
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-<div class="lg:col-span-1 space-y-6">
-<div class="glassmorphism rounded-2xl p-6">
-<h3 class="text-2xl font-bold text-white mb-4">Forecast Inputs</h3>
-<div class="space-y-4">
-<label class="block">
-<span class="text-white/80">City Zone</span>
-<select class="form-select mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset text-white/80 h-12 transition-all duration-300">
-<option>New York</option>
-<option>Tokyo</option>
-<option>London</option>
-</select>
-</label>
-<label class="block">
-<span class="text-white/80">Date</span>
-<input class="form-input mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset text-white/80 h-12 transition-all duration-300" type="date" value="2024-08-15"/>
-</label>
-<label class="block">
-<span class="text-white/80">Temperature (°C)</span>
-<input class="form-input mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset placeholder-white/40 text-white/80 h-12 transition-all duration-300" placeholder="e.g., 25°C" type="text"/>
-</label>
-<label class="block">
-<span class="text-white/80">Humidity (%)</span>
-<input class="form-input mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset placeholder-white/40 text-white/80 h-12 transition-all duration-300" placeholder="e.g., 60%" type="text"/>
-</label>
-<label class="block">
-<span class="text-white/80">Solar Radiation (W/m²)</span>
-<input class="form-input mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset placeholder-white/40 text-white/80 h-12 transition-all duration-300" placeholder="e.g., 800 W/m²" type="text"/>
-</label>
-</div>
-</div>
-<div class="glassmorphism rounded-2xl p-6 space-y-4">
-<h3 class="text-2xl font-bold text-white">48-Hour Forecast</h3>
-<p class="text-white/60 font-light">Next 48 hours prediction.</p>
-<div class="flex justify-around items-center pt-4">
-<div class="flex flex-col items-center gap-2 text-center">
-<span class="material-symbols-outlined text-4xl text-yellow-300" style="text-shadow: 0 0 10px #fdd835;">wb_sunny</span>
-<p class="font-medium">Sunny</p>
-<p class="text-sm text-white/60">High Solar</p>
-</div>
-<div class="flex flex-col items-center gap-2 text-center">
-<span class="material-symbols-outlined text-4xl text-gray-400" style="text-shadow: 0 0 10px #90a4ae;">cloud</span>
-<p class="font-medium">Cloudy</p>
-<p class="text-sm text-white/60">Moderate</p>
-</div>
-<div class="flex flex-col items-center gap-2 text-center">
-<span class="material-symbols-outlined text-4xl text-soft-green" style="text-shadow: 0 0 10px #66ff99;">eco</span>
-<p class="font-medium">Eco-Friendly</p>
-<p class="text-sm text-white/60">Low Demand</p>
-</div>
-<div class="flex flex-col items-center gap-2 text-center">
-<span class="material-symbols-outlined text-4xl text-electric-blue" style="text-shadow: 0 0 10px #00ffff;">bolt</span>
-<p class="font-medium">Peak</p>
-<p class="text-sm text-white/60">High Demand</p>
-</div>
-</div>
-</div>
-</div>
-<div class="lg:col-span-2 space-y-6">
-<h3 class="text-2xl font-bold text-white">Alerts &amp; Notifications</h3>
-<div class="space-y-4">
-<div class="glassmorphism rounded-xl p-6 flex items-center gap-6 border-l-4 border-eco-red shadow-glow-red transition-all duration-300 hover:scale-[1.02]">
-<span class="material-symbols-outlined text-4xl text-eco-red">error</span>
-<div class="flex-1 space-y-1">
-<p class="text-lg font-bold text-eco-red">Critical Alert: Grid Overload</p>
-<p class="text-white/80">Zone A predicted demand exceeds capacity in 2 hours.</p>
-<button class="text-sm font-medium text-electric-blue hover:underline">Take Action</button>
-</div>
-</div>
-<div class="glassmorphism rounded-xl p-6 flex items-center gap-6 border-l-4 border-eco-yellow shadow-glow-yellow transition-all duration-300 hover:scale-[1.02]">
-<span class="material-symbols-outlined text-4xl text-eco-yellow">warning</span>
-<div class="flex-1 space-y-1">
-<p class="text-lg font-bold text-eco-yellow">Warning: High Demand</p>
-<p class="text-white/80">Zone B demand rising faster than expected. Monitor closely.</p>
-<button class="text-sm font-medium text-electric-blue hover:underline">View Details</button>
-</div>
-</div>
-<div class="glassmorphism rounded-xl p-6 flex items-center gap-6 border-l-4 border-eco-green transition-all duration-300 hover:scale-[1.02]">
-<span class="material-symbols-outlined text-4xl text-eco-green">check_circle</span>
-<div class="flex-1 space-y-1">
-<p class="text-lg font-bold text-eco-green">System Stable</p>
-<p class="text-white/80">All grid zones are operating within normal parameters.</p>
-<button class="text-sm font-medium text-electric-blue hover:underline">View Report</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-</div>
-<script>
-    const particleContainer = document.querySelector('.particle-bg');
-    for (let i = 0; i < 30; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.left = `${Math.random() * 100}vw`;
-        particle.style.width = `${Math.random() * 3 + 1}px`;
-        particle.style.height = particle.style.width;
-        particle.style.animationDelay = `${Math.random() * 15}s`;
-        particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
-        if (Math.random() > 0.5) {
-            particle.style.background = '#66ff99';
+    <div class="particle-bg"></div>
+    <div class="flex min-h-screen">
+        <aside class="w-64 flex-shrink-0 p-4">
+            <div class="h-full flex flex-col gap-12 glassmorphism rounded-2xl">
+                <div class="flex flex-col items-center p-6 text-center">
+                    <h1 class="text-3xl font-bold text-soft-green tracking-wider">GridWise</h1>
+                    <p class="text-xs text-white/50 font-light">AI Predictive Forecaster</p>
+                </div>
+                <nav class="flex flex-col gap-4 px-4">
+                    <a class="nav-link active flex items-center gap-4 p-3 rounded-lg" href="#">
+                        <span class="material-symbols-outlined icon text-white/70">eco</span>
+                        <span class="nav-text font-medium text-white/70">Dashboard</span>
+                    </a>
+                    <a class="nav-link flex items-center gap-4 p-3 rounded-lg" href="#">
+                        <span class="material-symbols-outlined icon text-white/70">water_drop</span>
+                        <span class="nav-text font-medium text-white/70">Energy Map</span>
+                    </a>
+                    <a class="nav-link flex items-center gap-4 p-3 rounded-lg" href="#">
+                        <span class="material-symbols-outlined icon text-white/70">solar_power</span>
+                        <span class="nav-text font-medium text-white/70">Renewables</span>
+                    </a>
+                    <a class="nav-link flex items-center gap-4 p-3 rounded-lg" href="#">
+                        <span class="material-symbols-outlined icon text-white/70">notifications</span>
+                        <span class="nav-text font-medium text-white/70">Alerts</span>
+                    </a>
+                    <a class="nav-link flex items-center gap-4 p-3 rounded-lg" href="#">
+                        <span class="material-symbols-outlined icon text-white/70">settings</span>
+                        <span class="nav-text font-medium text-white/70">Settings</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+        <main class="flex-1 p-8 overflow-y-auto">
+            <div class="space-y-8">
+                <div>
+                    <h2 class="text-4xl font-bold text-white">Dashboard</h2>
+                    <p class="text-white/60 font-light">Real-time energy insights for a sustainable future.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-3 glassmorphism rounded-2xl p-6 shadow-glow-blue">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <p class="text-white/80 font-medium">Real-time Energy Demand</p>
+                                <p class="text-5xl font-bold text-electric-blue">12,500 MW</p>
+                            </div>
+                            <div class="flex items-center gap-2 text-soft-green font-medium">
+                                <span class="material-symbols-outlined">trending_up</span>
+                                <span>+2.5%</span>
+                            </div>
+                        </div>
+                        <div class="h-80 relative">
+                            <svg class="absolute inset-0 w-full h-full" fill="none" preserveaspectratio="none"
+                                viewbox="-3 0 478 170" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <lineargradient id="chart-gradient-blue" x1="0%" x2="0%" y1="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:rgba(0, 255, 255, 0.3)"></stop>
+                                        <stop offset="100%" style="stop-color:rgba(0, 255, 255, 0)"></stop>
+                                    </lineargradient>
+                                    <lineargradient id="chart-gradient-green" x1="0%" x2="0%" y1="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:rgba(102, 255, 153, 0.4)"></stop>
+                                        <stop offset="100%" style="stop-color:rgba(102, 255, 153, 0)"></stop>
+                                    </lineargradient>
+                                    <filter height="200%" id="glow-filter-blue" width="200%" x="-50%" y="-50%">
+                                        <fegaussianblur in="SourceGraphic" result="blur" stddeviation="4">
+                                        </fegaussianblur>
+                                        <fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite>
+                                    </filter>
+                                    <filter height="200%" id="glow-filter-green" width="200%" x="-50%" y="-50%">
+                                        <fegaussianblur in="SourceGraphic" result="blur" stddeviation="4">
+                                        </fegaussianblur>
+                                        <fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite>
+                                    </filter>
+                                </defs>
+                                <path
+                                    d="M0 130C18.1538 130 18.1538 41 36.3077 41C54.4615 41 54.4615 61 72.6154 61C90.7692 61 90.7692 113 108.923 113C127.077 113 127.077 53 145.231 53C163.385 53 163.385 121 181.538 121C199.692 121 199.692 81 217.846 81C236 81 236 65 254.154 65C272.308 65 272.308 141 290.462 141C308.615 141 308.615 169 326.769 169C344.923 169 344.923 21 363.077 21C381.231 21 381.231 101 399.385 101C417.538 101 417.538 149 435.692 149C453.846 149 453.846 45 472 45V169H0V130Z"
+                                    fill="url(#chart-gradient-green)"></path>
+                                <path
+                                    d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H0V109Z"
+                                    fill="url(#chart-gradient-blue)"></path>
+                                <path
+                                    d="M0 130C18.1538 130 18.1538 41 36.3077 41C54.4615 41 54.4615 61 72.6154 61C90.7692 61 90.7692 113 108.923 113C127.077 113 127.077 53 145.231 53C163.385 53 163.385 121 181.538 121C199.692 121 199.692 81 217.846 81C236 81 236 65 254.154 65C272.308 65 272.308 141 290.462 141C308.615 141 308.615 169 326.769 169C344.923 169 344.923 21 363.077 21C381.231 21 381.231 101 399.385 101C417.538 101 417.538 149 435.692 149C453.846 149 453.846 45 472 45"
+                                    filter="url(#glow-filter-green)" stroke="#66ff99" stroke-dasharray="5 5"
+                                    stroke-linecap="round" stroke-width="3"></path>
+                                <path
+                                    d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25"
+                                    filter="url(#glow-filter-blue)" stroke="#00ffff" stroke-linecap="round"
+                                    stroke-width="3"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-1 space-y-6">
+                        <div class="glassmorphism rounded-2xl p-6">
+                            <h3 class="text-2xl font-bold text-white mb-4">Forecast Inputs</h3>
+                            <div class="space-y-4">
+                                <label class="block">
+                                    <span class="text-white/80">City Zone</span>
+                                    <select
+                                        class="form-select mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset text-white/80 h-12 transition-all duration-300">
+                                        <option>New York</option>
+                                        <option>Tokyo</option>
+                                        <option>London</option>
+                                    </select>
+                                </label>
+                                <label class="block">
+                                    <span class="text-white/80">Date</span>
+                                    <input
+                                        class="form-input mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset text-white/80 h-12 transition-all duration-300"
+                                        type="date" value="2024-08-15" />
+                                </label>
+                                <label class="block">
+                                    <span class="text-white/80">Temperature (°C)</span>
+                                    <input
+                                        class="form-input mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset placeholder-white/40 text-white/80 h-12 transition-all duration-300"
+                                        placeholder="e.g., 25°C" type="text" />
+                                </label>
+                                <label class="block">
+                                    <span class="text-white/80">Humidity (%)</span>
+                                    <input
+                                        class="form-input mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset placeholder-white/40 text-white/80 h-12 transition-all duration-300"
+                                        placeholder="e.g., 60%" type="text" />
+                                </label>
+                                <label class="block">
+                                    <span class="text-white/80">Solar Radiation (W/m²)</span>
+                                    <input
+                                        class="form-input mt-1 block w-full rounded-lg bg-black/30 border-none focus:ring-2 focus:ring-electric-blue ring-inset placeholder-white/40 text-white/80 h-12 transition-all duration-300"
+                                        placeholder="e.g., 800 W/m²" type="text" />
+                                </label>
+                            </div>
+                        </div>
+                        <div class="glassmorphism rounded-2xl p-6 space-y-4">
+                            <h3 class="text-2xl font-bold text-white">48-Hour Forecast</h3>
+                            <p class="text-white/60 font-light">Next 48 hours prediction.</p>
+                            <div class="flex justify-around items-center pt-4">
+                                <div class="flex flex-col items-center gap-2 text-center">
+                                    <span class="material-symbols-outlined text-4xl text-yellow-300"
+                                        style="text-shadow: 0 0 10px #fdd835;">wb_sunny</span>
+                                    <p class="font-medium">Sunny</p>
+                                    <p class="text-sm text-white/60">High Solar</p>
+                                </div>
+                                <div class="flex flex-col items-center gap-2 text-center">
+                                    <span class="material-symbols-outlined text-4xl text-gray-400"
+                                        style="text-shadow: 0 0 10px #90a4ae;">cloud</span>
+                                    <p class="font-medium">Cloudy</p>
+                                    <p class="text-sm text-white/60">Moderate</p>
+                                </div>
+                                <div class="flex flex-col items-center gap-2 text-center">
+                                    <span class="material-symbols-outlined text-4xl text-soft-green"
+                                        style="text-shadow: 0 0 10px #66ff99;">eco</span>
+                                    <p class="font-medium">Eco-Friendly</p>
+                                    <p class="text-sm text-white/60">Low Demand</p>
+                                </div>
+                                <div class="flex flex-col items-center gap-2 text-center">
+                                    <span class="material-symbols-outlined text-4xl text-electric-blue"
+                                        style="text-shadow: 0 0 10px #00ffff;">bolt</span>
+                                    <p class="font-medium">Peak</p>
+                                    <p class="text-sm text-white/60">High Demand</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-2 space-y-6">
+                        <h3 class="text-2xl font-bold text-white">Alerts &amp; Notifications</h3>
+                        <div class="space-y-4">
+                            <div
+                                class="glassmorphism rounded-xl p-6 flex items-center gap-6 border-l-4 border-eco-red shadow-glow-red transition-all duration-300 hover:scale-[1.02]">
+                                <span class="material-symbols-outlined text-4xl text-eco-red">error</span>
+                                <div class="flex-1 space-y-1">
+                                    <p class="text-lg font-bold text-eco-red">Critical Alert: Grid Overload</p>
+                                    <p class="text-white/80">Zone A predicted demand exceeds capacity in 2 hours.</p>
+                                    <button class="text-sm font-medium text-electric-blue hover:underline">Take
+                                        Action</button>
+                                </div>
+                            </div>
+                            <div
+                                class="glassmorphism rounded-xl p-6 flex items-center gap-6 border-l-4 border-eco-yellow shadow-glow-yellow transition-all duration-300 hover:scale-[1.02]">
+                                <span class="material-symbols-outlined text-4xl text-eco-yellow">warning</span>
+                                <div class="flex-1 space-y-1">
+                                    <p class="text-lg font-bold text-eco-yellow">Warning: High Demand</p>
+                                    <p class="text-white/80">Zone B demand rising faster than expected. Monitor closely.
+                                    </p>
+                                    <button class="text-sm font-medium text-electric-blue hover:underline">View
+                                        Details</button>
+                                </div>
+                            </div>
+                            <div
+                                class="glassmorphism rounded-xl p-6 flex items-center gap-6 border-l-4 border-eco-green transition-all duration-300 hover:scale-[1.02]">
+                                <span class="material-symbols-outlined text-4xl text-eco-green">check_circle</span>
+                                <div class="flex-1 space-y-1">
+                                    <p class="text-lg font-bold text-eco-green">System Stable</p>
+                                    <p class="text-white/80">All grid zones are operating within normal parameters.</p>
+                                    <button class="text-sm font-medium text-electric-blue hover:underline">View
+                                        Report</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        const particleContainer = document.querySelector('.particle-bg');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${Math.random() * 100}vw`;
+            particle.style.width = `${Math.random() * 3 + 1}px`;
+            particle.style.height = particle.style.width;
+            particle.style.animationDelay = `${Math.random() * 15}s`;
+            particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+            if (Math.random() > 0.5) {
+                particle.style.background = '#66ff99';
+            }
+            particleContainer.appendChild(particle);
         }
-        particleContainer.appendChild(particle);
-    }
-</script>
-</body></html>
+    </script>
+</body>
+
+</html>
